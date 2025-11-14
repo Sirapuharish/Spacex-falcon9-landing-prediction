@@ -1,73 +1,35 @@
-🚀 SpaceX Falcon 9 Landing Prediction
-Overview
+SpaceX Falcon 9 Landing Prediction
 
-This project predicts whether the Falcon 9 first stage will successfully land based on launch features such as payload mass, orbit type, launch site, booster serial number, and other encoded variables. The goal is to understand what factors influence booster recovery and assist in cost estimation.
+Overview
+This project predicts whether the Falcon 9 first stage will successfully land based on launch features such as payload mass, orbit type, launch site, booster details, and other encoded parameters. The purpose of the project is to analyze the factors that influence landing success and build a machine learning model that can classify the outcome.
 
 Project Goal
-
-To build a machine learning classification model that predicts landing success (1 = landed, 0 = failed).
-The deployed Flask app uses Logistic Regression.
+The goal is to create a machine learning classification model to predict landing success (1 or 0). Logistic Regression was selected as the final model and integrated into a Flask web application.
 
 Repository Contents
+app.py – Flask application file
+spacex_model.pkl – trained Logistic Regression model
+model_columns.pkl – feature names used for training
+templates – HTML interface files
+static – CSS files
+Jupyter notebooks – used for data collection, preprocessing, EDA, and model training
 
-app.py — Flask web application
-
-spacex_model.pkl — trained Logistic Regression model
-
-model_columns.pkl — feature list used during model training
-
-templates/ — HTML files (web UI)
-
-static/ — CSS files
-
-Jupyter notebooks for data collection, wrangling, EDA, and model training
-
-Technologies / Libraries Used
-
+Technologies and Libraries Used
+Python
 Pandas
-
 NumPy
-
 Matplotlib
-
 Seaborn
-
-Scikit-learn
-
-preprocessing
-
-train_test_split
-
-GridSearchCV
-
-LogisticRegression
-
-SVC
-
-DecisionTreeClassifier
-
-KNeighborsClassifier
-
+Scikit-learn (preprocessing, train_test_split, GridSearchCV, LogisticRegression, SVC, DecisionTreeClassifier, KNeighborsClassifier)
 Flask
 
 Methodology
-
-Collected SpaceX data using API and web scraping
-
-Cleaned and processed the dataset
-
-Performed EDA using visualization and SQL
-
-Trained multiple ML models and compared performance
-
-Selected Logistic Regression and deployed it via Flask
+Collected and combined SpaceX launch data using API and web scraping.
+Performed data cleaning, feature engineering, and encoding.
+Conducted exploratory data analysis using visualizations and SQL queries.
+Trained multiple machine learning models including Logistic Regression, SVM, Decision Tree, and KNN.
+Evaluated all models and selected Logistic Regression based on performance and reliability.
+Deployed the final model through a Flask web interface.
 
 Model Performance
-
-Logistic Regression
-
-Jaccard Score: 0.80
-
-F1 Score: 0.7777
-
-Other models were tested (SVM, Decision Tree, KNN), but Logistic Regression performed best for deployment.
+Logistic Regression achieved a Jaccard score of 0.80 and an F1 score of 0.77 during evaluation.
