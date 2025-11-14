@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpaceX Falcon 9 Landing Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>🚀 SpaceX Falcon 9 Landing Predictor</h1>
+    <form action="/predict" method="post" class="form-box">
+
+        <div class="input-group">
+            <label>Flight Number</label>
+            <input type="number" name="FlightNumber" placeholder="e.g. 5" required>
+        </div>
+
+        <div class="input-group">
+            <label>Payload Mass (kg)</label>
+            <input type="number" name="PayloadMass" placeholder="e.g. 8000" required>
+        </div>
+
+        <div class="input-group">
+            <label>Orbit</label>
+            <select name="Orbit" required>
+                <option value="">-- Select Orbit (e.g. LEO) --</option>
+                <option value="LEO">LEO</option>
+                <option value="GTO">GTO</option>
+                <option value="SSO">SSO</option>
+                <option value="VLEO">VLEO</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Launch Site</label>
+            <select name="LaunchSite" required>
+                <option value="">-- Select Site (e.g. CCAFS SLC 40) --</option>
+                <option value="CCAFS SLC 40">CCAFS SLC 40</option>
+                <option value="KSC LC 39A">KSC LC 39A</option>
+                <option value="VAFB SLC 4E">VAFB SLC 4E</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Block</label>
+            <input type="number" name="Block" placeholder="e.g. 1" min="1" max="5" required>
+        </div>
+
+        <div class="input-group">
+            <label>Reused Count</label>
+            <input type="number" name="ReusedCount" placeholder="e.g. 0" min="0" required>
+        </div>
+
+        <button type="submit" class="btn">Predict Landing</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result-box {% if '✅' in prediction_text %}success{% else %}fail{% endif %}">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
